@@ -4,6 +4,12 @@
   "description": "React bindings for TopoStitch.",
   "main": "dist/index.cjs",
   "types": "dist/index.d.cts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --dts --external react --external react-dom --external react/jsx-runtime --external @topostitch/core",
     "prepare": "npm run build"
