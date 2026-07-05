@@ -1,6 +1,8 @@
 "use client";
 
-import "@google/model-viewer";
+if (typeof window !== "undefined") {
+  import("@google/model-viewer");
+}
 import type React from "react";
 import type { TopoObjectRendererProps } from "../../components/ObjectViewer";
 
