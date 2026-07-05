@@ -1,1 +1,1 @@
-export { renderers } from "./renderers/index";
+export * from "./renderers/index";

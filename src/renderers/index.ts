@@ -1,6 +1,3 @@
-export { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";
-export { ThreeRenderer } from "./three/ThreeRenderer";
-
 import { ModelViewerRenderer } from "./model-viewer/ModelViewerRenderer";
 import { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";
 import { ThreeRenderer } from "./three/ThreeRenderer";
@@ -39,3 +36,9 @@ export const renderers = [
     },
   },
 ] as const;
+
+export { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";
+export type { ReactThreeFiberRendererOptions } from "./react-three-fiber/ReactThreeFiberRenderer";
+export { ThreeRenderer } from "./three/ThreeRenderer";
+export type { ThreeRendererOptions } from "./three/ThreeRenderer";
+export { ModelViewerRenderer } from "./model-viewer/ModelViewerRenderer";
