@@ -1,5 +1,6 @@
-export * from "./react-three-fiber/ReactThreeFiberRenderer";
-export * from "./three/ThreeRenderer";
+export { ModelViewerRenderer } from "./model-viewer/ModelViewerRenderer";
+export { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";
+export { ThreeRenderer } from "./three/ThreeRenderer";
 
 import { ModelViewerRenderer } from "./model-viewer/ModelViewerRenderer";
 import { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";

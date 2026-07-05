@@ -12,16 +12,16 @@ export type TopoObjectRenderer<TOptions = unknown> = (
   props: TopoObjectRendererProps<TOptions>,
 ) => React.ReactNode;
 
-export interface ObjectViewerProps<TOptions = unknown> {
+export interface ObjectViewerProps {
   object: TopoObject;
-  renderer: TopoObjectRenderer<TOptions>;
-  options?: TOptions;
+  renderer: TopoObjectRenderer<any>;
+  options?: unknown;
 }
 
-export function ObjectViewer<TOptions = unknown>({
+export function ObjectViewer({
   object,
   renderer: Renderer,
   options,
-}: ObjectViewerProps<TOptions>) {
+}: ObjectViewerProps) {
   return <>{Renderer({ object, options })}</>;
 }
