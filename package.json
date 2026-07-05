@@ -28,7 +28,7 @@
     "@google/model-viewer": "^4.3.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
-    "@topostitch/core": "file:../core",
+    "@topostitch/core": "https://github.com/topostitch/core.git",
     "three": "^0.183.2"
   }
 }
