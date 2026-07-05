@@ -1,2 +1,2 @@
 export * from "./components/ObjectViewer";
-export * from "./renderers";
+export * from "./renderers/react-three-fiber/ReactThreeFiberRenderer";
