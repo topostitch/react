@@ -23,5 +23,5 @@ export function ObjectViewer<TOptions = unknown>({
   renderer: Renderer,
   options,
 }: ObjectViewerProps<TOptions>) {
-  return <Renderer object={object} options={options} />;
+  return <>{Renderer({ object, options })}</>;
 }
