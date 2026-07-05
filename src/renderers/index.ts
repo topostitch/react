@@ -1,4 +1,3 @@
-export { ModelViewerRenderer } from "./model-viewer/ModelViewerRenderer";
 export { ReactThreeFiberRenderer } from "./react-three-fiber/ReactThreeFiberRenderer";
 export { ThreeRenderer } from "./three/ThreeRenderer";
 
