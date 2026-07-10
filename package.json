@@ -47,7 +47,7 @@
     "@google/model-viewer": "^4.3.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
-    "@topostitch/core": "file:../core/topostitch-core-0.1.0.tgz",
+    "@topostitch/core": "^0.1.0",
     "aframe": "^1.8.0",
     "cesium": "^1.143.0",
     "three": "^0.183.2"
