@@ -37,8 +37,13 @@ declare module "react" {
 
 export function ModelViewerRenderer({
   object,
+  view = "model",
+  renderer,
   options = {},
 }: TopoObjectRendererProps<ModelViewerRendererOptions>) {
+  void view;
+  void renderer;
+
   const representation = object.representations.find(
     (item) => item.type === "model",
   );
@@ -49,9 +54,12 @@ export function ModelViewerRenderer({
 
   return (
     <model-viewer
-      src={representation.src}
-      poster={representation.poster}
-      alt={object.title}
+      src={representation.uri}
+      poster={representation.previewUri}
+      alt={
+        representation.accessibilityLabel ?? object.description ?? object.title
+      }
+      ar={representation.capabilities?.includes("ar") ?? false}
       camera-controls={options.cameraControls ?? true}
       auto-rotate={options.autoRotate ?? true}
       shadow-intensity={options.shadowIntensity ?? "1"}

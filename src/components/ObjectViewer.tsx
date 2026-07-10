@@ -2,9 +2,14 @@
 
 import type React from "react";
 import type { TopoObject } from "@topostitch/core";
+import type { TopoRenderer, TopoView } from "../types/TopoView";
+import { getRenderer } from "../renderers/registry";
+import { getDefaultRenderer } from "../renderers/defaults";
 
 export interface TopoObjectRendererProps<TOptions = unknown> {
   object: TopoObject;
+  view?: TopoView;
+  renderer?: TopoRenderer;
   options?: TOptions;
 }
 
@@ -14,14 +19,37 @@ export type TopoObjectRenderer<TOptions = unknown> = (
 
 export interface ObjectViewerProps {
   object: TopoObject;
-  renderer: TopoObjectRenderer<any>;
+  view?: TopoView;
+  renderer?: TopoRenderer;
   options?: unknown;
 }
 
 export function ObjectViewer({
   object,
-  renderer: Renderer,
+  view = "card",
+  renderer,
   options,
 }: ObjectViewerProps) {
-  return <>{Renderer({ object, options })}</>;
+  const resolvedRenderer = renderer ?? getDefaultRenderer(view);
+  const Renderer = getRenderer(view, resolvedRenderer);
+
+  if (!Renderer) {
+    return (
+      <p>
+        No renderer registered for view "{view}" with renderer "
+        {resolvedRenderer}".
+      </p>
+    );
+  }
+
+  return (
+    <>
+      {Renderer({
+        object,
+        view,
+        renderer: resolvedRenderer,
+        options,
+      })}
+    </>
+  );
 }

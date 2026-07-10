@@ -5,6 +5,7 @@ import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { useLayoutEffect, useMemo } from "react";
 import { Box3, Vector3 } from "three";
 import type { TopoObjectRendererProps } from "../../components/ObjectViewer";
+import { componentRegistry } from "./componentRegistry";
 
 export interface ReactThreeFiberRendererOptions {
   controls?: boolean;
@@ -89,7 +90,9 @@ export function ReactThreeFiberRenderer({
     (item) => item.type === "model",
   );
 
-  if (!representation?.src) {
+  const CustomComponent = componentRegistry[object.id];
+
+  if (!CustomComponent && !representation?.uri) {
     return <p>No 3D representation found.</p>;
   }
 
@@ -106,16 +109,24 @@ export function ReactThreeFiberRenderer({
       <Canvas camera={{ position: cameraPosition, fov: 35 }}>
         <ambientLight intensity={0.75} />
         <directionalLight position={[5, 5, 5]} intensity={1.5} />
+
         <Environment
           preset={options.environment ?? "studio"}
           background={options.environmentBackground ?? false}
         />
+
         <CameraRig position={cameraPosition} />
-        <NormalizedModel
-          src={representation.src}
-          scale={options.modelScale ?? 1}
-          normalizedSize={options.normalizedSize ?? 2.25}
-        />
+
+        {CustomComponent ? (
+          <CustomComponent scale={options.modelScale ?? 1} />
+        ) : (
+          <NormalizedModel
+            src={representation!.uri!}
+            scale={options.modelScale ?? 1}
+            normalizedSize={options.normalizedSize ?? 2.25}
+          />
+        )}
+
         {(options.controls ?? true) ? (
           <OrbitControls target={[0, 0, 0]} />
         ) : null}

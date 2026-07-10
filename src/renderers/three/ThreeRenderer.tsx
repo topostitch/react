@@ -58,8 +58,8 @@ export function ThreeRenderer({ object, options }: ThreeRendererProps) {
       (representation) => representation.type === "model",
     );
 
-    if (representation?.src) {
-      new GLTFLoader().load(representation.src, (gltf) => {
+    if (representation?.uri) {
+      new GLTFLoader().load(representation.uri, (gltf) => {
         scene.add(gltf.scene);
       });
     }
