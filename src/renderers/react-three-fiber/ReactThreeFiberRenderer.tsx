@@ -1,7 +1,13 @@
 "use client";
 
 import { Canvas, useThree } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import {
+  Bounds,
+  Center,
+  Environment,
+  OrbitControls,
+  useGLTF,
+} from "@react-three/drei";
 import { useLayoutEffect, useMemo } from "react";
 import { Box3, Vector3 } from "three";
 import type { TopoObjectRendererProps } from "../../components/ObjectViewer";
@@ -118,7 +124,11 @@ export function ReactThreeFiberRenderer({
         <CameraRig position={cameraPosition} />
 
         {CustomComponent ? (
-          <CustomComponent scale={options.modelScale ?? 1} />
+          <Bounds fit clip observe margin={1.2}>
+            <Center>
+              <CustomComponent scale={options.modelScale ?? 1} />
+            </Center>
+          </Bounds>
         ) : (
           <NormalizedModel
             src={representation!.uri!}
